@@ -16,14 +16,14 @@ const Products = () => {
     if (products) {
         return (
             <div className="py-5 min-h-screen">
-                <div className='grid grid-cols-4 gap-5 w-full h-full'>
+                <div className='grid grid-cols-3 gap-5 w-full h-full'>
                     {products.map((item, index) => (
                         <Fade key={item.imageUrl + index} triggerOnce>  {/* Add Fade animation */}
                             <Card className=" ">
                                 <CardHeader>
                                     <img
                                         loading='lazy'
-                                        className='object-cover w-full h-[300px] bg-slate-800/20 border rounded-xl mb-4'
+                                        className='object-cover w-full h-[350px] bg-slate-800/20 border rounded-xl mb-4'
                                         src={item.imageUrl}
                                         alt={item.name}
                                     />

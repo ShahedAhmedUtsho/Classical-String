@@ -8,7 +8,7 @@ import logo3 from '../../assets/icons8-guitar-500.svg';
 import logo4 from '../../assets/icons8-guitar-512.svg';
 import Products from './Products';
 
-const Body = () => {
+const Bodyy = () => {
     return (
         <div className="relative h-screen  flex flex-col ">
             
@@ -49,4 +49,4 @@ const Body = () => {
     );
 };
 
-export default Body;
+export default Bodyy;

@@ -7,7 +7,8 @@ import { Search, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Aside from "./Aside";
-import Body from "./body";
+
+import Bodyy from "./Body";
 
 function Home() {
 
@@ -19,7 +20,7 @@ function Home() {
             <Aside/>
         </aside>
        <main className="  w-full h-screen  col-span-10 flex flex-col   ">
-            <Body/>
+            <Bodyy/>
        </main>
        
         </div>
