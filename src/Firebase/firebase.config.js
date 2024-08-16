@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { i } from "vite/dist/node/types.d-aGj9QkWt";
-import { getAuth } from 'firebase/auth'
+import { getAuth } from "firebase/auth";
+
+
+
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -10,7 +12,10 @@ const firebaseConfig = {
     appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-const Auth = getAuth(app)
-export default Auth
+console.log("Firebase app initialized:", app);
+
+const Auth = getAuth(app);
+console.log(Auth)
+export default Auth;

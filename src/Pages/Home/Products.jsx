@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
 import useFetch from '@/Hooks/useFetch';
@@ -7,8 +7,25 @@ import { Star } from 'lucide-react';
 import { Fade } from 'react-awesome-reveal';  // Import Fade from react-awesome-reveal
 import defaultImg from '../../assets/VC203.webp';
 
-const Products = () => {
+const Products = ({by}) => {
+    const [guitars,setGuitars] = useState([])
     const { products, isLoading, isError, refetch } = useFetch();
+
+
+    useEffect(()=>{
+
+        setGuitars(products)
+console.log("hi")
+    },[products]) ;
+useEffect(()=>{
+    console.log(by)
+
+},[by])
+
+
+
+
+
 
     if (isLoading) return <div className="py-5 min-h-screen flex justify-center mt-[20%]"> <PuffLoader /></div> ;
     if (isError) return <span>Something went wrong</span>;
@@ -17,7 +34,7 @@ const Products = () => {
         return (
             <div className="py-5 min-h-screen">
                 <div className='grid grid-cols-3 gap-5 w-full h-full'>
-                    {products.map((item, index) => (
+                    {guitars?.map((item, index) => (
                         <Fade key={item.imageUrl + index} triggerOnce>  {/* Add Fade animation */}
                             <Card className=" ">
                                 <CardHeader>
