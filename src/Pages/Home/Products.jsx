@@ -12,15 +12,51 @@ const Products = ({by}) => {
     const { products, isLoading, isError, refetch } = useFetch();
 
 
+
+
+    
     useEffect(()=>{
+        if(products){
+     const sort = [...products] ;
+     
+         if(by==="price"){
+             sort.sort((a,b)=>  a.price - b.price ) 
+            
+             
+             
+                 }else if(by==="date"){
+                     sort.sort((a,b)=> new Date(a.createdAt) - new Date(b.createdAt)) 
+                       
+             
+                 } 
+                     setGuitars(sort)
+             
+                 
+        }
+     
+     },[by,products])
 
-        setGuitars(products)
-console.log("hi")
-    },[products]) ;
+    
 useEffect(()=>{
-    console.log(by)
+   if(products){
+const sort = products ;
 
-},[by])
+    if(by==="price"){
+        sort.sort((a,b)=>  a.price - b.price ) 
+       
+        
+        
+            }else if(by==="date"){
+                sort.sort((a,b)=> new Date(a.createdAt) - new Date(b.createdAt)) 
+                  
+        
+            } 
+                setGuitars(sort)
+        
+            
+   }
+
+},[by,products])
 
 
 
