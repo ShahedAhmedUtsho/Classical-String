@@ -8,7 +8,7 @@ export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
     const {toast} = useToast()
     const [user,setUser] = useState(null)
-
+const backUrl = import.meta.env.VITE_BACKEND
     const [loading,setLoading] = useState(true) ; 
     const [error,setError] = useState("") ;
     const [success,setSuccess] = useState("");
@@ -79,7 +79,7 @@ const register = (email,password)=>{
 
 
 
-    const send={user,loading,error,message,success,logOut,googleLogin,register,passwordLogin,Alert,setLoading,setUser}
+    const send={user,backUrl,loading,error,message,success,logOut,googleLogin,register,passwordLogin,Alert,setLoading,setUser}
     return (
         <AuthContext.Provider value={send}>
 {children}

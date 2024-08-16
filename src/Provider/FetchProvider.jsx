@@ -1,3 +1,4 @@
+import useAuth from '@/Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { createContext,  useEffect, useState } from 'react';
@@ -8,8 +9,8 @@ import React, { createContext,  useEffect, useState } from 'react';
 
 export const FetchContext = createContext()
 const FetchProvider = ({children}) => {
-
-const [url,setUrl] = useState('data.json')
+const {backUrl} = useAuth()
+const [url,setUrl] = useState(`${backUrl}/products`)
 
 
 
@@ -18,7 +19,7 @@ const {data:products , refetch , isLoading ,isError}=  useQuery(
         queryKey:['products'],
         queryFn : async()=>{
            try {
-            const res = await  axios.get(url,{withCredentials:true})
+            const res = await  axios.get(url)
 
            return res?.data ? res?.data : []
             
@@ -26,15 +27,9 @@ const {data:products , refetch , isLoading ,isError}=  useQuery(
             console.log(error)
            }
 
- 
-
-        
-
         }
     }
 )
-
-
 
 
 

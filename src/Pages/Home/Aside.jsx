@@ -1,12 +1,20 @@
 import { Avatar } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import useAuth from '@/Hooks/useAuth';
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { User } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
 const Aside = () => {
     const { user, logOut, Alert } = useAuth();
     const navigate = useNavigate();
@@ -20,6 +28,55 @@ const Aside = () => {
                         Discover premium classical guitars with specifications, prices, and top picks.
                     </CardDescription>
                 </CardHeader>
+                
+                <CardContent>
+               
+                    <Select >
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select Brand" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          
+          <SelectItem value="Yamaha">Yamaha</SelectItem>
+          <SelectItem value="Gibson">Gibson</SelectItem>
+          <SelectItem value="Fender">Fender</SelectItem>
+          <SelectItem value="Manuel Rodriguez">Manuel Rodriguez</SelectItem>
+          <SelectItem value="Cordoba">Cordoba</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+</CardContent><CardContent className="">
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Guitar type" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          
+          <SelectItem value="classical guitar">classical guitar</SelectItem>
+          <SelectItem value="acoustic guitar">acoustic guitar</SelectItem>
+          
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+                </CardContent>
+                <CardContent className="">
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Price range" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          
+          <SelectItem value="500">$0 to $500</SelectItem>
+          <SelectItem value="1000">$500 to $1000</SelectItem>
+          <SelectItem value="1000+"> $1000 +</SelectItem>
+          
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+                </CardContent>
             </Card>
 
             <Card className="mt-auto border-none rounded-none">
