@@ -25,7 +25,7 @@ const Products = ({by}) => {
              
              
                  }else if(by==="date"){
-                     sort.sort((a,b)=> new Date(a.createdAt) - new Date(b.createdAt)) 
+                     sort.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt)) 
                        
              
                  } 
@@ -36,28 +36,15 @@ const Products = ({by}) => {
      
      },[by,products])
 
-    
-useEffect(()=>{
-   if(products){
-const sort = products ;
 
-    if(by==="price"){
-        sort.sort((a,b)=>  a.price - b.price ) 
-       
-        
-        
-            }else if(by==="date"){
-                sort.sort((a,b)=> new Date(a.createdAt) - new Date(b.createdAt)) 
-                  
-        
-            } 
-                setGuitars(sort)
-        
-            
-   }
 
-},[by,products])
 
+
+
+
+
+
+   
 
 
 
@@ -89,6 +76,20 @@ const sort = products ;
                                     </CardDescription>
                                     <CardDescription>
                                         <strong>{item?.stringType === "Nylon" ? "Classical Guitar" : "Acoustic Guitar"}</strong>
+                                    </CardDescription>
+                                    <CardDescription>
+                                        <strong>{
+                                            (()=>{
+                                                const date = new Date(item.createdAt).toLocaleDateString('en-US',{
+                                                    day: 'numeric',
+                                                    month: 'short', 
+                                                    year : 'numeric',
+                                                })
+                                                return `${date}`
+                                            })()
+                                            
+                                            
+                                            }</strong>
                                     </CardDescription>
                                 </CardContent>
                                 <CardFooter className="flex justify-between">
