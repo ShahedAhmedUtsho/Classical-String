@@ -15,6 +15,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import FetchProvider from './Provider/FetchProvider';
+import AuthProvider from './Provider/AuthProvider';
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -33,13 +34,16 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme" >
+    <AuthProvider />
     <QueryClientProvider client={queryClient}> 
+      
       <FetchProvider >
        
           <RouterProvider router={router} />
        
       </FetchProvider>
       </QueryClientProvider>
+      <AuthProvider />
     </ThemeProvider>
   
   </StrictMode>,
