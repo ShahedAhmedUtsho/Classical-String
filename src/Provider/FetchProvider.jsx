@@ -9,17 +9,20 @@ import React, { createContext,  useEffect, useState } from 'react';
 
 export const FetchContext = createContext()
 const FetchProvider = ({children}) => {
-const {backUrl} = useAuth()
-const [url,setUrl] = useState(`${backUrl}/products`)
+const {backUrl} = useAuth();
 const [searchValue,setSearchValue] = useState("")
 const [by,setBy] = useState("normal") ;
 const [category,setCategory]=useState("") ;
 const [range,setRange]=useState("") ;
+const [limit,setLimit] = useState(6) ;
+const [page,setPage] = useState(1);
+const [brand,setBrand] = useState('') ;
+const [currentPage, setCurrentPage] = useState(1); 
+const [url,setUrl] = useState(`${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}&limit=${limit}&page=${page}`)
 
-const [brand,setBrand] = useState('')
 
 
-const {data:products , refetch , isLoading ,isError}=  useQuery(
+const {data, refetch , isLoading ,isError}=  useQuery(
     {
         queryKey:['products',url],
         queryFn : async()=>{
@@ -38,17 +41,26 @@ console.log(res.data)
 
 
 const sortFn =()=>{
-    console.log(brand,range,category,searchValue)  ;
-    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}`;
-    console.log(searchUrl)  ;
+    
+    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}&limit=${limit}&page=${1}`;
+    
     setUrl(searchUrl) ; 
+    setCurrentPage(1)
     refetch()
 }
 const searchFn = (e)=>{
     e.preventDefault()
-    console.log(brand,range,category,searchValue)  ;
-    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}`;
-    console.log(searchUrl)  ;
+    
+    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}&limit=${limit}&page=${1}`;
+    
+    setUrl(searchUrl) ; 
+    setCurrentPage(1) ;
+    refetch()
+}
+const PageFn =()=>{
+    
+    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}&limit=${limit}&page=${page}`;
+    
     setUrl(searchUrl) ; 
     refetch()
 }
@@ -56,8 +68,7 @@ const searchFn = (e)=>{
 
 
 
-
-    const share = {sortFn,products,by,setBy,searchFn,refetch,isLoading,isError,brand,category,range,setBrand,setCategory,setRange , searchValue,setSearchValue}
+    const share = {sortFn,products:data?.products,totalItems:data?.totalItems,itemPerPage:limit,setPage,page,by,setBy,searchFn,refetch,isLoading,isError,brand,category,range,setBrand,setCategory,setRange , searchValue,setSearchValue,currentPage, setCurrentPage,PageFn}
     return (
         <FetchContext.Provider value={share}>
             {children}
