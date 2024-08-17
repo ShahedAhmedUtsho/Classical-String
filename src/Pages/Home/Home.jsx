@@ -14,9 +14,9 @@ function Home() {
 
 
     return (
-        <div className="lg:h-screen min-h-screen  grid grid-cols-12   ">
+        <div className="lg:h-screen min-h-screen  lg:grid grid-cols-12   ">
 
-        <aside className=" border-r w-full h-screen col-span-2 flex flex-col  ">
+        <aside className=" border-r lg:flex hidden w-full h-screen col-span-2  flex-col  ">
             <Aside/>
         </aside>
        <main className="  w-full h-screen  col-span-10 flex flex-col   ">
