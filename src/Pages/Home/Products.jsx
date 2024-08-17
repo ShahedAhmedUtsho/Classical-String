@@ -28,7 +28,8 @@ const Products = () => {
         }
     }, [products]);
     useEffect(()=>{
-        PageFn()
+        PageFn() ;
+        console.log("hello")
     },[currentPage])
 
     const handlePageChange = (page) => {

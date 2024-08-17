@@ -59,7 +59,7 @@ const searchFn = (e)=>{
 }
 const PageFn =()=>{
     
-    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}&limit=${limit}&page=${page}`;
+    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}&limit=${limit}&page=${currentPage}`;
     
     setUrl(searchUrl) ; 
     refetch()
