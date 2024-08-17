@@ -41,12 +41,18 @@ createRoot(document.getElementById('root')).render(
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme" >
     <AuthProvider>
     <QueryClientProvider client={queryClient}> 
+    
+    <FetchProvider >
+    
       
-      <FetchProvider >
+     
        
           <RouterProvider router={router} />
        
+     
+     
       </FetchProvider>
+     
       </QueryClientProvider>
       </AuthProvider>
     </ThemeProvider>

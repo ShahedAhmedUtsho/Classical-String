@@ -15,9 +15,33 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
+import useFetch from '@/Hooks/useFetch';
 const Aside = () => {
     const { user, logOut, Alert } = useAuth();
+    const {brand,category,range,setBrand,setCategory,setRange} = useFetch()
     const navigate = useNavigate();
+
+
+
+
+const handleCategory = (a)=>{
+ a==="all"? setCategory("") : setCategory(a) ; 
+console.log(a)
+}
+
+
+const handleBrand = (a)=>{
+  a==="all"? setBrand("") : setBrand(a) ; 
+  console.log(a)
+ }
+
+const handlePrice = (a)=>{
+  a==="all"? setRange("") : setRange(a) ; 
+  console.log(a)
+ }
+
+
+
 
     return (
         <aside className="flex flex-col h-full">
@@ -31,13 +55,13 @@ const Aside = () => {
                 
                 <CardContent>
                
-                    <Select >
+                    <Select onValueChange={handleCategory} >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select Brand" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          
+        <SelectItem value="all">All</SelectItem>
           <SelectItem value="Yamaha">Yamaha</SelectItem>
           <SelectItem value="Gibson">Gibson</SelectItem>
           <SelectItem value="Fender">Fender</SelectItem>
@@ -47,13 +71,13 @@ const Aside = () => {
       </SelectContent>
     </Select>
 </CardContent><CardContent className="">
-    <Select>
+    <Select onValueChange={handleBrand}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Guitar type" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          
+        <SelectItem value="all">All</SelectItem>
           <SelectItem value="classical guitar">classical guitar</SelectItem>
           <SelectItem value="acoustic guitar">acoustic guitar</SelectItem>
           
@@ -62,13 +86,13 @@ const Aside = () => {
     </Select>
                 </CardContent>
                 <CardContent className="">
-    <Select>
+    <Select onValueChange={handlePrice}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Price range" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          
+        <SelectItem value="all">All</SelectItem>
           <SelectItem value="500">$0 to $500</SelectItem>
           <SelectItem value="1000">$500 to $1000</SelectItem>
           <SelectItem value="1000+"> $1000 +</SelectItem>

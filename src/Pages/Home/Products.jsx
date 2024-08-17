@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,memo } from 'react';
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
 import useFetch from '@/Hooks/useFetch';
@@ -18,7 +18,7 @@ const Products = ({by}) => {
     useEffect(()=>{
         if(products){
      const sort = [...products] ;
-     
+     console.log(products , "one")
          if(by==="price"){
              sort.sort((a,b)=>  a.price - b.price ) 
             
@@ -52,20 +52,20 @@ const Products = ({by}) => {
 
     if (isLoading) return <div className="py-5 min-h-screen flex justify-center mt-[20%]"> <PuffLoader /></div> ;
     if (isError) return <span>Something went wrong</span>;
-
+console.log(guitars.length , guitars)
     if (products) {
         return (
             <div className="py-5 min-h-screen">
                 <div className='grid grid-cols-3 gap-5 w-full h-full'>
-                    {guitars?.map((item, index) => (
-                        <Fade key={item.imageUrl + index} triggerOnce>  {/* Add Fade animation */}
+                {guitars  &&  guitars?.map((item, index) => (
+                        <Fade key={item?.imageUrl || index} triggerOnce>  {/* Add Fade animation */}
                             <Card className=" ">
                                 <CardHeader>
                                     <img
                                         loading='lazy'
                                         className='object-cover w-full h-[350px] bg-slate-800/20 border rounded-xl mb-4'
-                                        src={item.imageUrl}
-                                        alt={item.name}
+                                        src={item?.imageUrl}
+                                        alt={item?.name}
                                     />
                                     <CardTitle>{item?.name}</CardTitle>
                                 </CardHeader>
@@ -79,12 +79,13 @@ const Products = ({by}) => {
                                     </CardDescription>
                                     <CardDescription>
                                         <strong>{
-                                            (()=>{
-                                                const date = new Date(item.createdAt).toLocaleDateString('en-US',{
+                                            item?.price && (()=>{
+                                                const date = new Date(item?.createdAt).toLocaleDateString('en-US',{
                                                     day: 'numeric',
                                                     month: 'short', 
                                                     year : 'numeric',
                                                 })
+                                                console.log("date")
                                                 return `${date}`
                                             })()
                                             
@@ -94,7 +95,7 @@ const Products = ({by}) => {
                                 </CardContent>
                                 <CardFooter className="flex justify-between">
                                     <span className='text-xl'>
-                                        ${parseInt(item.price)}
+                                        ${parseInt(item?.price)}
                                     </span>
                                     <span className='flex gap-1 items-center text-base'>
                                         <Star size={18} /> {item?.rating}

@@ -16,12 +16,15 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
+import useFetch from '@/Hooks/useFetch';
 const Bodyy = () => {
-const [by,setBy] = useState("normal")
+  const {setSearchValue,searchFn}=useFetch()
+const [by,setBy] = useState("normal") ;
+
 
 
 const sortBy = (by) =>{
-  
+ 
 setBy(by)
   
 
@@ -40,10 +43,10 @@ setBy(by)
                 <Navbar />
             </header>
             <div className="w-full    px-5  relative  flex justify-between ">
-            <span className="flex gap-3 items-center max-w-96 mt-5 w-full mb-10 justify-center">
-                    <Input type="text" placeholder="Search" /> 
-                    <Button className="bg-slate-700 dark:bg-slate-300">Search</Button>
-            </span>
+            <form onSubmit={searchFn} className="flex gap-3 items-center max-w-96 mt-5 w-full mb-10 justify-center">
+                    <Input type="text"  onChange={(e)=>{setSearchValue(e.target.value)}} placeholder="Search" /> 
+                    <Button type="submit" className="bg-slate-700 dark:bg-slate-300">Search</Button>
+            </form>
             <span className="flex gap-3 w-full  items-end max-w-96 mt-5 mb-10 justify-end">
             <Select className="w-full" onValueChange={sortBy}>
       <SelectTrigger className="w-[180px]">
