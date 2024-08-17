@@ -55,7 +55,7 @@ const handlePrice = (a)=>{
                 
                 <CardContent>
                
-                    <Select onValueChange={handleCategory} >
+                    <Select onValueChange={handleBrand} >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select Brand" />
       </SelectTrigger>
@@ -71,15 +71,15 @@ const handlePrice = (a)=>{
       </SelectContent>
     </Select>
 </CardContent><CardContent className="">
-    <Select onValueChange={handleBrand}>
+    <Select onValueChange={handleCategory}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Guitar type" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
         <SelectItem value="all">All</SelectItem>
-          <SelectItem value="classical guitar">classical guitar</SelectItem>
-          <SelectItem value="acoustic guitar">acoustic guitar</SelectItem>
+          <SelectItem value="classical">classical guitar</SelectItem>
+          <SelectItem value="acoustic">acoustic guitar</SelectItem>
           
         </SelectGroup>
       </SelectContent>
@@ -93,9 +93,9 @@ const handlePrice = (a)=>{
       <SelectContent>
         <SelectGroup>
         <SelectItem value="all">All</SelectItem>
-          <SelectItem value="500">$0 to $500</SelectItem>
-          <SelectItem value="1000">$500 to $1000</SelectItem>
-          <SelectItem value="1000+"> $1000 +</SelectItem>
+          <SelectItem value="0-500">$0 to $500</SelectItem>
+          <SelectItem value="500-1500">$500 to $1500</SelectItem>
+          <SelectItem value="1500+"> $1500 +</SelectItem>
           
         </SelectGroup>
       </SelectContent>

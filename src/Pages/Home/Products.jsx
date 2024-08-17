@@ -7,9 +7,9 @@ import { Star } from 'lucide-react';
 import { Fade } from 'react-awesome-reveal';  // Import Fade from react-awesome-reveal
 import defaultImg from '../../assets/VC203.webp';
 
-const Products = ({by}) => {
+const Products = () => {
     const [guitars,setGuitars] = useState([])
-    const { products, isLoading, isError, refetch } = useFetch();
+    const { products, isLoading, isError, refetch , sortFn} = useFetch();
 
 
 
@@ -17,24 +17,19 @@ const Products = ({by}) => {
     
     useEffect(()=>{
         if(products){
-     const sort = [...products] ;
-     console.log(products , "one")
-         if(by==="price"){
-             sort.sort((a,b)=>  a.price - b.price ) 
+
+
             
-             
-             
-                 }else if(by==="date"){
-                     sort.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt)) 
-                       
-             
-                 } 
+     const sort = [...products] ;
+
+
+
                      setGuitars(sort)
              
                  
         }
      
-     },[by,products])
+     },[products])
 
 
 
@@ -52,7 +47,7 @@ const Products = ({by}) => {
 
     if (isLoading) return <div className="py-5 min-h-screen flex justify-center mt-[20%]"> <PuffLoader /></div> ;
     if (isError) return <span>Something went wrong</span>;
-console.log(guitars.length , guitars)
+
     if (products) {
         return (
             <div className="py-5 min-h-screen">
@@ -85,7 +80,7 @@ console.log(guitars.length , guitars)
                                                     month: 'short', 
                                                     year : 'numeric',
                                                 })
-                                                console.log("date")
+                                               
                                                 return `${date}`
                                             })()
                                             

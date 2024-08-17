@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -18,15 +18,17 @@ import {
   } from "@/components/ui/select"
 import useFetch from '@/Hooks/useFetch';
 const Bodyy = () => {
-  const {setSearchValue,searchFn}=useFetch()
-const [by,setBy] = useState("normal") ;
+  const {setSearchValue,searchFn,setBy,sortFn,by}=useFetch()
 
 
+useEffect(()=>{
+  sortFn()
+},[by])
 
-const sortBy = (by) =>{
+const sortBy = async(by) =>{
  
 setBy(by)
-  
+
 
 
 }
@@ -61,7 +63,10 @@ normal
           <SelectItem  value="price"> 
 Price
             </SelectItem>
-          <SelectItem value="date">
+            <SelectItem  value="rating"> 
+Rating
+            </SelectItem>
+          <SelectItem value="createdAt">
            
 Date Added
             
@@ -71,7 +76,7 @@ Date Added
       </SelectContent>
     </Select>
             </span>
- {/* Uncomment these lines if you need the logos as background images */}
+ 
                 
  <img src={logo3} alt="logo" className="absolute opacity-15 max-w-96 hidden dark:inline-block right-0 left-0 mx-auto mt-[10%]" />
                 <img src={logo4} alt="logo" className="absolute opacity-15 max-w-96 dark:hidden inline-block right-0 left-0 mx-auto mt-[10%]" /> 
@@ -86,7 +91,7 @@ Date Added
 
        <div className="w-full h-full  overflow-scroll   px-5  relative ">
                
-               <Products by={by} />
+               <Products  />
 
            </div>
 

@@ -3,7 +3,6 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import React, { createContext, useEffect, useState } from 'react';
 import Auth from '../Firebase/firebase.config'
 import { useToast } from '@/components/ui/use-toast';
-import { useQuery } from '@tanstack/react-query';
 
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
@@ -16,40 +15,16 @@ const backUrl = import.meta.env.VITE_BACKEND
     const [message,setMessage] = useState("")
 
 
-  
+
+
+
+
+
+
+
+
+
     
-        const [url,setUrl] = useState(`${backUrl}/products`)
-        const [searchValue,setSearchValue] = useState("")
-        
-        const [category,setCategory]=useState("") ;
-        const [range,setRange]=useState("") ;
-        
-        const [brand,setBrand] = useState('')
-
-
-        const {data:products , refetch , isLoading ,isError}=  useQuery(
-            {
-                queryKey:['products',url],
-                queryFn : async()=>{
-                   try {
-                    const res = await  axios.get(url)
-        console.log(res.data)
-                   return res?.data || []
-                    
-                   } catch (error) {
-                    console.log(error)
-                   }
-        
-                }
-            }
-        )
-        
-
-
-
-
-
-
 const Alert = (variant,title,description)=>{
     toast({
         variant: variant,

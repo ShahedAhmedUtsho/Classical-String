@@ -12,7 +12,7 @@ const FetchProvider = ({children}) => {
 const {backUrl} = useAuth()
 const [url,setUrl] = useState(`${backUrl}/products`)
 const [searchValue,setSearchValue] = useState("")
-
+const [by,setBy] = useState("normal") ;
 const [category,setCategory]=useState("") ;
 const [range,setRange]=useState("") ;
 
@@ -37,21 +37,27 @@ console.log(res.data)
 )
 
 
-
+const sortFn =()=>{
+    console.log(brand,range,category,searchValue)  ;
+    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}`;
+    console.log(searchUrl)  ;
+    setUrl(searchUrl) ; 
+    refetch()
+}
 const searchFn = (e)=>{
-    // e.preventDefault()
-    // console.log(brand,range,category,searchValue)  ;
-    // const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}`;
-    // console.log(searchUrl)  ;
-    // setUrl(searchUrl) ; 
-    // refetch()
+    e.preventDefault()
+    console.log(brand,range,category,searchValue)  ;
+    const searchUrl = `${backUrl}/products?category=${category}&range=${range}&brand=${brand}&search=${searchValue}&sort=${by}`;
+    console.log(searchUrl)  ;
+    setUrl(searchUrl) ; 
+    refetch()
 }
 
 
 
 
 
-    const share = {products,searchFn,refetch,isLoading,isError,brand,category,range,setBrand,setCategory,setRange , searchValue,setSearchValue}
+    const share = {sortFn,products,by,setBy,searchFn,refetch,isLoading,isError,brand,category,range,setBrand,setCategory,setRange , searchValue,setSearchValue}
     return (
         <FetchContext.Provider value={share}>
             {children}
