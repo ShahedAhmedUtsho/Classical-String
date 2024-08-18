@@ -9,6 +9,7 @@ import React, { createContext,  useEffect, useState } from 'react';
 
 export const FetchContext = createContext()
 const FetchProvider = ({children}) => {
+    const [isActive,setActive] = useState(true) ;
 const {backUrl} = useAuth();
 const [searchValue,setSearchValue] = useState("")
 const [by,setBy] = useState("normal") ;
@@ -68,7 +69,7 @@ const PageFn =()=>{
 
 
 
-    const share = {sortFn,products:data?.products,totalItems:data?.totalItems,itemPerPage:limit,setPage,page,by,setBy,searchFn,refetch,isLoading,isError,brand,category,range,setBrand,setCategory,setRange , searchValue,setSearchValue,currentPage, setCurrentPage,PageFn}
+    const share = {sortFn,products:data?.products,totalItems:data?.totalItems,itemPerPage:limit,setPage,page,by,setBy,searchFn,refetch,isLoading,isError,brand,category,range,setBrand,setCategory,setRange , searchValue,setSearchValue,currentPage, setCurrentPage,PageFn,isActive,setActive}
     return (
         <FetchContext.Provider value={share}>
             {children}

@@ -17,8 +17,9 @@ import {
     SelectValue,
   } from "@/components/ui/select"
 import useFetch from '@/Hooks/useFetch';
+import { BetweenHorizontalEnd } from 'lucide-react';
 const Bodyy = () => {
-  const {setSearchValue,searchFn,setBy,sortFn,by,totalItems, currentPage,itemPerPage}=useFetch()
+  const {setSearchValue,searchFn,setBy,sortFn,by,totalItems, currentPage,itemPerPage,setActive,isActive}=useFetch()
 
 
 // const showing = ;
@@ -64,6 +65,10 @@ setBy(by)
 
 
             <span className="flex gap-3 w-full  items-end md:max-w-96 mt-5 mb-3 md:mb-10 justify-end">
+            <BetweenHorizontalEnd onClick={()=>{
+  console.log("click cloase")
+ setActive(true)
+}} className={`lg:hidden  float-right  mb-2 ${isActive?"hidden":"block"}  z-[9999] `}  />
             <Select className="w-full" onValueChange={sortBy}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Shot by" />
@@ -105,11 +110,15 @@ Date Added
           
             </div>
             {
-                  totalItems  > 0 &&  <span className='  md:float-right -mt-10 !py-4 px-5 '>Total items: {totalItems}  ({firstItemIndex}-{lastItemIndex})</span> 
-                }
+                  totalItems  > 0 &&  <span className='  md:float-right inline  !py-4 px-5 '>Total items: {totalItems}  ({firstItemIndex}-{lastItemIndex})</span> 
+                } 
+
        </div>
 
+       
 
+      
+    
 
 
 

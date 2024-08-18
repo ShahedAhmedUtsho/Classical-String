@@ -30,11 +30,11 @@ const {theme} = useTheme() ;
     }, [products]);
     useEffect(()=>{
         PageFn() ;
-        console.log("hello")
+        
     },[currentPage])
 
     const handlePageChange = (page) => {
-        console.log(page);
+       
         setCurrentPage(page);
         setPage(page);
         
@@ -72,7 +72,7 @@ const {theme} = useTheme() ;
                                           const arr = content.split("") ;
                                           
                                           const cut = arr.slice(0,100).join("")
-                                          console.log(cut)
+                                          
                                           const result = arr.length > 100 ? ( <>{`${cut} `} <strong>more</strong> </>)  : (<>{`${item?.description} `}  </>) 
 
 return result
