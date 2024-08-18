@@ -9,7 +9,7 @@ import React, { createContext,  useEffect, useState } from 'react';
 
 export const FetchContext = createContext()
 const FetchProvider = ({children}) => {
-    const [isActive,setActive] = useState(true) ;
+    const [isActive,setActive] = useState(false) ;
 const {backUrl} = useAuth();
 const [searchValue,setSearchValue] = useState("")
 const [by,setBy] = useState("normal") ;

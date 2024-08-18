@@ -17,10 +17,13 @@ import {
 import FetchProvider from './Provider/FetchProvider';
 import AuthProvider from './Provider/AuthProvider';
 import Auth from './Pages/Auth/Auth';
+import Error from './components/Error/Error';
+import About from './components/About/About';
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<Error/>,
     element: <Routes />,
     children:[
       {
@@ -30,6 +33,11 @@ const router = createBrowserRouter([
       {
         path:"/auth",
         element:<Auth />
+      },
+      ,
+      {
+        path:"/about",
+        element:<About />
       }
     ]
   },

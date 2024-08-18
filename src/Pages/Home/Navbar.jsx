@@ -19,9 +19,9 @@ const Navbar = () => {
   
   <NavigationMenuList>
   <NavigationMenuItem>
-          <Link className={navigationMenuTriggerStyle()} to="/">
+          <Link className={navigationMenuTriggerStyle()} to="/about">
            
-              Documentation
+             About
            
           </Link>
         </NavigationMenuItem>
