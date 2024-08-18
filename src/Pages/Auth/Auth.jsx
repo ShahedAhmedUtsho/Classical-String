@@ -33,7 +33,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import useAuth from '../../Hooks/useAuth';
 import { AuthContext } from '@/Provider/AuthProvider';
-import Register from './register';
+import Register from './Register.jsx';
 import Login from './Login';
 import { Facebook } from 'lucide-react';
 import  googleLogo from '../../assets/icons8-google (1).svg'

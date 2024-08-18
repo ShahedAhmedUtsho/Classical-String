@@ -15,9 +15,10 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useTheme } from '@/components/ThemeProvider';
 
 const Products = () => {
-
+const {theme} = useTheme() ;
     const [guitars, setGuitars] = useState([]);
     const { products, isLoading, isError, refetch, sortFn, currentPage, setCurrentPage,totalItems, itemPerPage, setPage,PageFn } = useFetch();
 
@@ -39,13 +40,18 @@ const Products = () => {
         
     };
 
-    if (isLoading) return <div className="py-5 min-h-screen flex justify-center mt-[20%]"> <PuffLoader /></div>;
+    if (isLoading) return <div className="py-5 min-h-screen relative flex justify-center mt-[20%]">
+         <PuffLoader  size={70} color={theme === "dark" ? "white" : "black" }  />
+         
+         
+         </div>;
     if (isError) return <span>Something went wrong</span>;
 
     if (products) {
         return (
-            <div className="py-5 min-h-screen">
-                <div className='grid grid-cols-3 gap-5 w-full h-full'>
+            <div className="py-5 min-h-screen pb-20 ">
+                
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-full'>
                     {guitars && guitars.map((item, index) => (
                         <Fade key={item?.imageUrl || index} triggerOnce>
                             <Card className=" ">
@@ -59,7 +65,23 @@ const Products = () => {
                                     <CardTitle>{item?.name}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <CardDescription>{item?.description}</CardDescription>
+                                    <CardDescription>{
+
+                                        (()=>{
+                                          const content =   item?.description ;
+                                          const arr = content.split("") ;
+                                          
+                                          const cut = arr.slice(0,100).join("")
+                                          console.log(cut)
+                                          const result = arr.length > 100 ? ( <>{`${cut} `} <strong>more</strong> </>)  : (<>{`${item?.description} `}  </>) 
+
+return result
+
+
+                                          
+                                        })()
+                                        
+                                        }</CardDescription>
                                     <CardDescription>
                                         Brand: <strong>{item?.brand}</strong>
                                     </CardDescription>
@@ -100,9 +122,14 @@ const Products = () => {
                                     disabled={currentPage === 1}
                                 />
                             </PaginationItem>
+                            <PaginationItem className="block md:hidden">
+                                        <PaginationLink >
+                                            {currentPage}
+                                        </PaginationLink>
+                                    </PaginationItem>
                             {totalItems > 0 && itemPerPage > 0 && Array.isArray([...Array(Math.ceil(totalItems / itemPerPage)).keys()]) ? (
                                 [...Array(Math.ceil(totalItems / itemPerPage)).keys()].map(page => (
-                                    <PaginationItem key={page}>
+                                    <PaginationItem className="hidden md:block" key={page}>
                                         <PaginationLink onClick={() => handlePageChange(page + 1)} isActive={currentPage === page + 1}>
                                             {page + 1}
                                         </PaginationLink>

@@ -16,20 +16,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <NavigationMenu className="">
-  <NavigationMenuList className="">
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-     
-    </NavigationMenuItem>
-  </NavigationMenuList>
-
-
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-     
-    </NavigationMenuItem>
-  </NavigationMenuList>
+  
   <NavigationMenuList>
   <NavigationMenuItem>
           <Link className={navigationMenuTriggerStyle()} to="/">
