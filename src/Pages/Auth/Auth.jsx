@@ -38,7 +38,7 @@ import Login from './Login';
 import { Facebook } from 'lucide-react';
 import  googleLogo from '../../assets/icons8-google (1).svg'
 const Auth = () => {
-const {user,setUser,loading,error,isLoading,message,success,logOut,googleLogin,register,passwordLogin,Alert,setLoading} = useAuth()
+const {setUser,googleLogin,Alert,setLoading} = useAuth()
     const navigate =useNavigate()
     const [searchParams]= useSearchParams()
 
@@ -58,7 +58,7 @@ const google = async()=>{
   } catch (error) {
     Alert("destructive",` Error`,error.message )
   }finally{
-    setLoading(true)
+    setLoading(false)
   }
 
 }

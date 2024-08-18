@@ -19,6 +19,7 @@ import AuthProvider from './Provider/AuthProvider';
 import Auth from './Pages/Auth/Auth';
 import Error from './components/Error/Error';
 import About from './components/About/About';
+import VerifyUser from './Verify/VerifyUser';
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
     children:[
       {
         path: "/",
-    element: <Home />,
+    element: <VerifyUser><Home /></VerifyUser>,
       },
       {
         path:"/auth",
