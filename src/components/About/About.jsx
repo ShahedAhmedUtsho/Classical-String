@@ -56,10 +56,10 @@ const About = () => {
           <ol className="list-decimal pl-4">
             <li>Download the project files from our GitHub repository: <a href="https://github.com/ShahedAhmedUtsho/Classical-String" target="_blank" rel="noopener noreferrer" className="text-blue-500">Classical String GitHub Repo</a>.</li>
             <li>Navigate to the project directory and install the dependencies:
-              <pre className="bg-gray-100 p-2 rounded"><code>npm install</code></pre>
+              <pre className="bg-gray-100 dark:bg-gray-700 p-2 rounded"><code>npm install</code></pre>
             </li>
             <li>Start the development server:
-              <pre className="bg-gray-100 p-2 rounded"><code>npm start</code></pre>
+              <pre className="bg-gray-100  dark:bg-gray-700 p-2 rounded"><code>npm start</code></pre>
             </li>
             <li>Access the website locally by opening <a href="http://localhost/5173" target="_blank" rel="noopener noreferrer" className="text-blue-500">http://localhost:5173</a> in your browser.</li>
           </ol>
