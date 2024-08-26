@@ -29,7 +29,7 @@ const {data, refetch , isLoading ,isError}=  useQuery(
         queryFn : async()=>{
            try {
             const res = await  axios.get(url)
-console.log(res.data)
+
            return res?.data || []
             
            } catch (error) {

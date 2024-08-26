@@ -38,7 +38,7 @@ const Alert = (variant,title,description)=>{
 const unsubscribe = onAuthStateChanged(Auth,(user) =>{
 try{
     setUser(user) ; 
-    console.log(user)
+   
 
 }catch (error){
     console.log(error)

@@ -26,18 +26,15 @@ const Aside = () => {
 
 const handleCategory = (a)=>{
  a==="all"? setCategory("") : setCategory(a) ; 
-console.log(a)
 }
 
 
 const handleBrand = (a)=>{
-  a==="all"? setBrand("") : setBrand(a) ; 
-  console.log(a)
+  a==="all"? setBrand("") : setBrand(a) ;
  }
 
 const handlePrice = (a)=>{
   a==="all"? setRange("") : setRange(a) ; 
-  console.log(a)
  }
 
 

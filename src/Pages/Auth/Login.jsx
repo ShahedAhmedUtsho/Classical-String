@@ -57,7 +57,6 @@ const {user,loading,error,message,success,logOut,googleLogin,register,passwordLo
 
 
 const handleLogin = async(value)=>{
-    console.log("login",value);
     try{
         setLoading(true)
 const res = await passwordLogin(value.email,value.password);
