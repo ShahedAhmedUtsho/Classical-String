@@ -127,7 +127,7 @@ setUser(user)
         
         
        
-        <Button className="w-full !mt-10" type="submit" >Register</Button>
+        <Button className="w-full !mt-10" type="submit" >Login</Button>
       </form>
       
     </Form>
